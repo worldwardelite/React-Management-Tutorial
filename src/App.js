@@ -7,7 +7,7 @@ function App() {
     <div className="gray-background">
       <img src={logo}  alt=""/>
       <h2>Let's develop management system!</h2>
-      
+      {/* comment line */}
     </div>
   );
 }
