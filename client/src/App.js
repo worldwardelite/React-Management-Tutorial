@@ -30,11 +30,26 @@ const styles = theme => ({
 
 class  App extends Component {
 
-  state = {
-    customers: '',
-    completed: 0
+  constructor(props){
+    super(props);
+    this.state = {
+      customers: '',
+      completed: 0
+    }
   }
 
+  stateRefresh = () => {
+    this.setState({
+      customers: '',
+      completed: 0
+    });
+
+    this.callApi()
+      .then(res => this.setState({customers: res}))
+      .catch(err => console.log(err));
+
+  }
+  
   componentDidMount() {
     this.timer = setInterval(this.progress, 20);
     this.callApi()
@@ -53,7 +68,6 @@ class  App extends Component {
     this.setState({
       completed: completed >= 100? 0 : completed+1
     });
-
   }
   render(){
     const { classes } = this.props;
@@ -69,11 +83,13 @@ class  App extends Component {
               <TableCell>Birthday</TableCell>
               <TableCell>Sex</TableCell>
               <TableCell>Job</TableCell>
+              <TableCell>Delete</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
         {
-         this.state.customers? this.state.customers.map( customer => { return (<Customer key = {customer.id} id={customer.id} image={customer.image} name={customer.name} birthday={customer.birthday} gender={customer.gender} job = {customer.job} />);}) 
+         this.state.customers? this.state.customers.map( customer => { 
+           return (<Customer stateRefresh = {this.stateRefresh} key = {customer.id} id={customer.id} image={customer.image} name={customer.name} birthday={customer.birthday} gender={customer.gender} job = {customer.job} />);}) 
          : 
          <TableRow>
            <TableCell colSpan ="6" align = "center">
@@ -84,7 +100,7 @@ class  App extends Component {
         </TableBody>
         </Table>
       </Paper>
-      <CustomerAdd/>
+      <CustomerAdd stateRefresh = {this.stateRefresh}/>
       </div>
     )
    
