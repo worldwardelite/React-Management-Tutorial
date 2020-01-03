@@ -1,6 +1,9 @@
 Management System.
 
+This project be created as tutorial project follow youtube learning video like https://www.youtube.com/watch?v=s2knmog2j1U&list=PLRx0vPvlEmdCED62ZIWCbI-6G_jcwmuFB
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
  
 ## Available Scripts
 

@@ -99,6 +99,11 @@ class CustomerAdd extends React.Component{
         return post(url,formData,config);
 
     }
+    componentDidMount() {
+        if(this.cbRef) {
+            this.cbRef.focus();
+        }
+    }
 
     render() {
         const { classes } = this.props;
@@ -117,7 +122,8 @@ class CustomerAdd extends React.Component{
                             </Button>
                         </label>
                         <br/>
-                        <TextField label="이름" type="text" name ="userName" value ={this.state.userName} onChange = {this.handleValueChange} /> <br/>
+                        
+                        <TextField label="이름"  type="text"  autoFocus= 'true' name ="userName" value ={this.state.userName} onChange = {this.handleValueChange} /> <br/>
                         <TextField label="생년월일" type="text" name ="birthday" value ={this.state.birthday} onChange = {this.handleValueChange} /> <br/>
                         <TextField label="성별" type="text" name ="gender" value ={this.state.gender} onChange = {this.handleValueChange} /> <br/>
                         <TextField label="직업" type="text" name ="job" value ={this.state.job} onChange = {this.handleValueChange} /> <br/>

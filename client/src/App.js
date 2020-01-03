@@ -213,11 +213,7 @@ class  App extends Component {
      
       </div>
     )
-   
-
   }
- 
-  
 }
 
 export default withStyles(styles)(App);
